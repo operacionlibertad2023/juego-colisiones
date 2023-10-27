@@ -1,0 +1,136 @@
+[gd_scene load_steps=11 format=3 uid="uid://brixg65lcacj2"]
+
+[ext_resource type="Script" path="res://Personajes/personaje.gd" id="2_2s8me"]
+[ext_resource type="Texture2D" uid="uid://21nact4ndg5h" path="res://assets/personaj_principal.png" id="2_ocky7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_785y7"]
+radius = 8.06226
+
+[sub_resource type="Animation" id="Animation_6nacx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_0y5ru"]
+resource_name = "caminarAbajo"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_ki26o"]
+resource_name = "caminarArriba"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 6, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_cbs64"]
+resource_name = "caminarDerecha"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [11, 12, 11, 12, 11]
+}
+
+[sub_resource type="Animation" id="Animation_mlg2b"]
+resource_name = "caminarIzquierda"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 9, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_g6f0v"]
+resource_name = "idle"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pqyk4"]
+_data = {
+"RESET": SubResource("Animation_6nacx"),
+"caminarAbajo": SubResource("Animation_0y5ru"),
+"caminarArriba": SubResource("Animation_ki26o"),
+"caminarDerecha": SubResource("Animation_cbs64"),
+"caminarIzquierda": SubResource("Animation_mlg2b"),
+"idle": SubResource("Animation_g6f0v")
+}
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("2_2s8me")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(320, 190)
+scale = Vector2(2.06619, 1.83451)
+texture = ExtResource("2_ocky7")
+hframes = 4
+vframes = 4
+frame = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(320, 198)
+shape = SubResource("CircleShape2D_785y7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_pqyk4")
+}

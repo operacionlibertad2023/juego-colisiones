@@ -1,0 +1,137 @@
+[gd_scene load_steps=11 format=3 uid="uid://cmwb0lringi0j"]
+
+[ext_resource type="Script" path="res://Personajes/guardia.gd" id="1_4wf8k"]
+[ext_resource type="Texture2D" uid="uid://cuq5pw8v7gyn" path="res://assets/guardia_gordito.png" id="2_0ti6h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qmhcr"]
+size = Vector2(18.6402, 32.8591)
+
+[sub_resource type="Animation" id="Animation_gtrqc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_yey6f"]
+resource_name = "caminarArriba"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 4]
+}
+
+[sub_resource type="Animation" id="Animation_irxoa"]
+resource_name = "caminarDerecha"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 6, 5]
+}
+
+[sub_resource type="Animation" id="Animation_8phma"]
+resource_name = "caminarIzquierda"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_7q3v1"]
+resource_name = "idle"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 0]
+}
+
+[sub_resource type="Animation" id="Animation_7a46j"]
+resource_name = "personajeQuieto"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c2evs"]
+_data = {
+"RESET": SubResource("Animation_gtrqc"),
+"caminarArriba": SubResource("Animation_yey6f"),
+"caminarDerecha": SubResource("Animation_irxoa"),
+"caminarIzquierda": SubResource("Animation_8phma"),
+"idle": SubResource("Animation_7q3v1"),
+"personajeQuieto": SubResource("Animation_7a46j")
+}
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(302, 168)
+scale = Vector2(1.00849, 1)
+script = ExtResource("1_4wf8k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.14386, 2.04955)
+texture = ExtResource("2_0ti6h")
+hframes = 3
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-0.308746, 0)
+scale = Vector2(0.990656, 1.15645)
+shape = SubResource("RectangleShape2D_qmhcr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_c2evs")
+}

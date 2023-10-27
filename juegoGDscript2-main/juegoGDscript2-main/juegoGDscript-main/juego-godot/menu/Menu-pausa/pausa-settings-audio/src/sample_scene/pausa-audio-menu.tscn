@@ -1,0 +1,123 @@
+[gd_scene load_steps=7 format=3 uid="uid://bolhxonimspt8"]
+
+[ext_resource type="Script" path="res://menu/Menu-pausa/pausa-settings-audio/src/sample_scene/pausa-audio-menu.gd" id="1_83ymm"]
+[ext_resource type="FontFile" uid="uid://dkqolkx4rd6y6" path="res://menu/Perfect DOS VGA 437.ttf" id="2_h33gp"]
+[ext_resource type="PackedScene" uid="uid://dr0ihu51kwt7q" path="res://menu-settibngs-audio/src/volume_slider/volume_slider.tscn" id="3_vuw3q"]
+[ext_resource type="Theme" uid="uid://dya6ykwne113c" path="res://theme.tres" id="4_f44qr"]
+[ext_resource type="AudioStream" uid="uid://bc1fdfw5t40wr" path="res://menu-settibngs-audio/audio/song.ogg" id="5_kky87"]
+[ext_resource type="AudioStream" uid="uid://boqwruowdw6i3" path="res://menu-settibngs-audio/audio/switch_on.ogg" id="6_xj1q0"]
+
+[node name="sample_scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+script = ExtResource("1_83ymm")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.443137, 0.721569, 0.745098, 1)
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_kky87")
+autoplay = true
+
+[node name="sound_effect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_xj1q0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.5
+offset_top = -89.5
+offset_right = 67.5
+offset_bottom = 89.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="Button2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_f44qr")
+theme_override_fonts/font = ExtResource("2_h33gp")
+text = "Sonido"
+
+[node name="contents" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="options" type="PanelContainer" parent="VBoxContainer/contents"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="contents" type="VBoxContainer" parent="VBoxContainer/contents/options"]
+layout_mode = 2
+theme = ExtResource("4_f44qr")
+alignment = 1
+
+[node name="master_label" type="Label" parent="VBoxContainer/contents/options/contents"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_h33gp")
+theme_override_font_sizes/font_size = 16
+text = "Volumen General"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="master" parent="VBoxContainer/contents/options/contents" instance=ExtResource("3_vuw3q")]
+layout_mode = 2
+
+[node name="music_label" type="Label" parent="VBoxContainer/contents/options/contents"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_h33gp")
+theme_override_font_sizes/font_size = 16
+text = "Volumen Musica "
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters_behavior = 4
+text_direction = 1
+language = "es_AR"
+
+[node name="music" parent="VBoxContainer/contents/options/contents" instance=ExtResource("3_vuw3q")]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="sfx_label" type="Label" parent="VBoxContainer/contents/options/contents"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_h33gp")
+theme_override_font_sizes/font_size = 16
+text = "Volumen SFX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="sfx" parent="VBoxContainer/contents/options/contents" instance=ExtResource("3_vuw3q")]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme = ExtResource("4_f44qr")
+theme_override_fonts/font = ExtResource("2_h33gp")
+theme_override_font_sizes/font_size = 20
+text = "Volver"
+flat = true
+
+[connection signal="button_down" from="VBoxContainer/Button" to="." method="_on_button_button_down"]

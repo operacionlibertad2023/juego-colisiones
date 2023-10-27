@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://p41mjynlb4it"]
+
+[ext_resource type="Texture2D" uid="uid://xi11yy8qlmxu" path="res://assets/linternaspriteset.png" id="1_ifg8u"]
+[ext_resource type="Texture2D" uid="uid://bdrb50bqbupwv" path="res://Accesorios/new_gradient_texture_2d.tres" id="2_vscbc"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nqd02"]
+blend_mode = 1
+light_mode = 2
+
+[node name="Sprite2D" type="Sprite2D"]
+position = Vector2(298, 164)
+texture = ExtResource("1_ifg8u")
+hframes = 2
+vframes = 2
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-95, -14)
+scale = Vector2(10.125, 5.45313)
+texture = ExtResource("2_vscbc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_nqd02")
+position = Vector2(43, -2)
+scale = Vector2(0.380939, 0.317383)
+texture = ExtResource("2_vscbc")

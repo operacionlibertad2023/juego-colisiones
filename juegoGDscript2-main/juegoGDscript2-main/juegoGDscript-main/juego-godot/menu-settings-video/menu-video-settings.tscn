@@ -1,0 +1,102 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnjudmgj8i4i2"]
+
+[ext_resource type="Script" path="res://menu-settings-video/menu-video-settings.gd" id="1_5uiim"]
+[ext_resource type="FontFile" uid="uid://dkqolkx4rd6y6" path="res://menu/Perfect DOS VGA 437.ttf" id="2_you0s"]
+
+[node name="sample_scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_5uiim")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.564706, 0.313726, 0.784314, 1)
+
+[node name="contents" type="VBoxContainer" parent="."]
+self_modulate = Color(0.0431373, 0.611765, 0.666667, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Label" type="Label" parent="contents"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_you0s")
+text = "Video "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="options" type="PanelContainer" parent="contents"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="contents" type="VBoxContainer" parent="contents/options"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="VBoxContainer" type="HBoxContainer" parent="contents/options/contents"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="full" type="Label" parent="contents/options/contents/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_you0s")
+text = "Pantalla completa"
+
+[node name="fullview" type="CheckBox" parent="contents/options/contents/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="HBoxContainer" parent="contents/options/contents"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 96
+
+[node name="fps" type="Label" parent="contents/options/contents/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_you0s")
+text = "Ver Fps
+"
+horizontal_alignment = 1
+
+[node name="fps-btn" type="CheckButton" parent="contents/options/contents/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Salir" type="Button" parent="contents/options/contents"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_you0s")
+text = "Volver
+"
+
+[connection signal="button_down" from="contents/options/contents/VBoxContainer/fullview" to="." method="_on_check_box_button_down"]
+[connection signal="toggled" from="contents/options/contents/VBoxContainer/fullview" to="." method="_on_check_box_toggled"]
+[connection signal="toggled" from="contents/options/contents/VBoxContainer/fullview" to="." method="_on_fullview_toggled"]
+[connection signal="button_down" from="contents/options/contents/VBoxContainer2/fps-btn" to="." method="_on_check_box_button_down"]
+[connection signal="toggled" from="contents/options/contents/VBoxContainer2/fps-btn" to="." method="_on_fpsbtn_toggled"]
+[connection signal="toggled" from="contents/options/contents/VBoxContainer2/fps-btn" to="." method="_on_check_box_toggled"]
+[connection signal="button_down" from="contents/options/contents/Salir" to="." method="_on_salir_button_down"]
+[connection signal="toggled" from="contents/options/contents/Salir" to="." method="_on_salir_toggled"]

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://d11bqkubop18l"]
+
+[ext_resource type="VideoStream" path="res://assets/Nuevo_proyecto.ogv" id="1_83o8a"]
+
+[node name="videoCargaInicio" type="VideoStreamPlayer"]
+offset_right = 1920.0
+offset_bottom = 1088.0
+scale = Vector2(0.333628, 0.330536)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stream = ExtResource("1_83o8a")
+autoplay = true

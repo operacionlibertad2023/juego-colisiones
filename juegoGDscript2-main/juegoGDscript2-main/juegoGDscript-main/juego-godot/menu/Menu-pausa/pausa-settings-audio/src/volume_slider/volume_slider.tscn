@@ -1,0 +1,38 @@
+[gd_scene load_steps=9 format=3 uid="uid://6cvnvkv2t2hv"]
+
+[ext_resource type="Texture2D" uid="uid://bb8cv6n3ugypi" path="res://assets/linterna.png" id="1_xuubd"]
+[ext_resource type="Texture2D" uid="uid://cp58b3vukv714" path="res://assets/piso-prueba.png" id="2_4xfav"]
+[ext_resource type="Script" path="res://menu-settibngs-audio/src/volume_slider/volume_slider.gd" id="3_ll4hs"]
+
+[sub_resource type="Gradient" id="Gradient_28nfk"]
+colors = PackedColorArray(0, 0, 0, 1, 0.641068, 0.268134, 0.0307539, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_420wm"]
+gradient = SubResource("Gradient_28nfk")
+fill_to = Vector2(1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_60y26"]
+texture = SubResource("GradientTexture2D_420wm")
+texture_margin_top = 1.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p8s0i"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_mx6y4"]
+color = Color(1, 1, 1, 0)
+
+[node name="volume_slider" type="HSlider"]
+offset_right = 139.0
+offset_bottom = 16.0
+scale = Vector2(1.92105, 1.8069)
+theme_override_icons/grabber = ExtResource("1_xuubd")
+theme_override_icons/grabber_highlight = ExtResource("1_xuubd")
+theme_override_icons/grabber_disabled = ExtResource("1_xuubd")
+theme_override_icons/tick = ExtResource("2_4xfav")
+theme_override_styles/slider = SubResource("StyleBoxTexture_60y26")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_p8s0i")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_mx6y4")
+min_value = -30.0
+max_value = 0.0
+script = ExtResource("3_ll4hs")
+
+[connection signal="value_changed" from="." to="." method="_on_value_changed"]
